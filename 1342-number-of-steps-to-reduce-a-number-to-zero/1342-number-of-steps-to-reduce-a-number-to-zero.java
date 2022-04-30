@@ -1,19 +1,17 @@
 class Solution {
     public int numberOfSteps(int num) {
         
-        if(num==0)
-            return 0;
+       //recursive method 
+      return  helper(num,0);
         
-        int count=0;
-        while(num!=0){
-            if((num&1)==0){
-                num=(num>>1);
-            }
-            else{
-                num=num-1;
-            }
-            count++;
-        }
-        return count;
     }
+    
+    static int helper(int a,int b){
+        if(a==0)
+            return b;
+        if(a%2==0)
+            return helper(a/2,++b);
+        return helper(a-1,++b);
+    
+}
 }
