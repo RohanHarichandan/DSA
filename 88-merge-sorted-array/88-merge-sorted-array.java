@@ -1,13 +1,30 @@
 class Solution {
-    public void merge(int[] A, int m, int[] B, int n) {
+    public void merge(int[] a, int m, int[] b, int n) {
         
-       int i = m - 1, j = n - 1, k = m + n - 1;
-        while(i >= 0 && j >= 0) {
-            A[k--] = A[i] > B[j] ? A[i--] : B[j--];
+        int i=0;
+        int j=0;
+        int k=0;
+        int c[]=new int[m+n];
+        
+      while(i<m && j<n){
+          if(a[i]<b[j]){
+              c[k++]=a[i++];       
+          }
+          else{
+              c[k++]=b[j++];
+          }
+      }
+        for(;i<m;i++){
+            c[k++]=a[i];
+            
         }
-        while(j >= 0) {
-            A[k--] = B[j--];
+        for(;j<n;j++){
+            c[k++]=b[j];
+            
         }
+       for(int x=0;x<m+n;x++){
+           a[x]=c[x];
+       }
     }
 }
 
